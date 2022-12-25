@@ -1,0 +1,21 @@
+{
+    "name": "Cursus Messenger",
+    "short_name": "Cursus Messenger",
+    "start_url": "/app/cursus/",
+    "background_color": "#273346",
+    "theme_color": "#273346",
+    "icons": [
+        {
+            "src": "./dist/cursusIcon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "./dist/cursusIcon192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "display": "standalone",
+    "orientation":"portrait"
+}

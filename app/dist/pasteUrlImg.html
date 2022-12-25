@@ -1,0 +1,66 @@
+<html>
+    <head></head>
+    <body />                         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <script>
+    function drop(ev) {
+      ev.preventDefault();
+      document.getElementById("DropData").innerHTML=ev.dataTransfer.getData("Text");
+      document.getElementById("DropData").click();
+      document.getElementById("DropData").innerHTML="";
+    }
+    function retrieveImageFromClipboardAsBase64(pasteEvent, callback, imageFormat){
+        if(pasteEvent.clipboardData == false){
+            if(typeof(callback) == "function"){
+                callback(undefined);
+            }
+        };
+        var items = pasteEvent.clipboardData.items;
+        if(items == undefined){
+            if(typeof(callback) == "function"){
+                callback(undefined);
+            }
+        };
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf("image") == -1) continue;
+            var blob = items[i].getAsFile();
+            var mycanvas = document.createElement("canvas");
+            var ctx = mycanvas.getContext('2d');
+            var img = new Image();
+            img.onload = function(){
+                mycanvas.width = this.width;
+                mycanvas.height = this.height;
+                ctx.drawImage(img, 0, 0);
+                if(typeof(callback) == "function"){
+                    callback(mycanvas.toDataURL(
+                        (imageFormat || "image/png")
+                    ));
+                }
+            };
+            var URLObj = window.URL || window.webkitURL;
+            img.src = URLObj.createObjectURL(blob);
+        }
+    }
+    function  bindHandler()
+    {
+        window.addEventListener("paste", function(e){
+            retrieveImageFromClipboardAsBase64(e, function(imageDataBase64){
+                if(imageDataBase64){
+                    document.getElementById("imgData").innerHTML=imageDataBase64;
+                    document.getElementById("imgData").click();
+                    document.getElementById("imgData").innerHTML="";
+                }
+                else{
+                    document.getElementById("imgData").innerHTML="paste_event";
+                    document.getElementById("imgData").click();
+                    document.getElementById("imgData").innerHTML="";
+                }
+            });
+        }, false);
+    }
+    </script>
+    </head>
+    <div id="comment" class="stylecomment" contenteditable="true" display: inline-block></div>
+    <div id="DropData" style="display:none"></div>
+    <div id="imgData" style="display:none" contenteditable="true"></div>
+    </body>
+    </html>

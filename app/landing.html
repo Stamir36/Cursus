@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Cursus by Unesell - Быстрый мессенджер. Оналйн переписки.</title>
+    <link rel="shortcut icon" href="cursus.png" type="image/png" />
+    <meta name="description"
+    content="Быстрый и лёгкий мессенджер сообщений, который позволяет переписываться с друзьями и коллегами. Лёгкий, красивый, быстрый - это Cursus. От Unesell Studio." />
+    <meta name="keywords"
+      content="Messendger, Сообщения, переписки, онлайн чат, Tellegram, WhathApp, Bootstrap, jQuery, Unesell, MyDevice, LiPari, Социальные сети, игры, онлайн программы, Общение, Програмирование, Дизайн, Програмное обеспечение, Магазин" />
+    <meta name="author" content="Unesell Studio | Стас Мирошниченко" />
+    <link rel="stylesheet" href="landing.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <link rel="manifest" href="manifest.json">
+
+     <script>
+         // WEB APP - PWA Settings
+         if('serviceWorker' in navigator){
+             navigator.serviceWorker.register('service-worker.js');
+         } else {
+             console.log("Service worker is not supported");
+         }
+     </script>
+   </head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><img src="dist/cursus.svg" alt="logo" class="imglogo"> <a class="textLogo">Cursus</a></div>
+      <div class="buttons">
+        <a>by Unesell Studio</a>
+      </div>
+    </nav>
+
+    <div class="text-content">
+      <h2 class="text">Быстрый, лёгкий, твой<br>мессенджер</h2>
+      <p class="text">Обменивайтесь сообщениями с другими пользователями Unesell Studio, общайтесь с друзьями, или соперниками LiPari. Всё это быстро, бесплатно, и красиво.</p>
+    </div>
+
+    <img src="dist/app.png" alt="app" class="appBanner">
+    <div class="play-button" onclick="document.location.href = '/login/?go=cursus';">
+      <span class="play text">Войти в аккаунт</span>
+      <i class="fas fa-play" onclick="click()"></i>
+    </div>
+  </header>
+
+</body>
+</html>
