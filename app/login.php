@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include_once "php/config.php";
+    include_once "config.php";
 
     $id = htmlspecialchars($_COOKIE["id"]);
 

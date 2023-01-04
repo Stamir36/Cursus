@@ -1,19 +1,5 @@
 const URL = 'voice.php';
 
-/*
-let div = document.createElement('div');
-div.id = 'messages';
-let start = document.createElement('button');
-start.id = 'start';
-start.innerHTML = 'Start';
-let stop = document.createElement('button');
-stop.id = 'stop';
-stop.innerHTML = 'Stop';
-document.body.appendChild(div);
-document.body.appendChild(start);
-document.body.appendChild(stop);
-*/
-
 let min = 0; let textMin = "";
 let sec = 0; let textSec = "";
 

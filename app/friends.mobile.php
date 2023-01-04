@@ -89,7 +89,7 @@
             </div>
 
 
-            <button class="add"></button>
+            <button class="add" id="btmPlus" onclick="usersOpen();"></button>
             <div class="overlay"></div>
         </div>
 
@@ -102,7 +102,37 @@
     </div>
     <script src="dist/script.js"></script>
     <script src="jsMessenger/users.js"></script>
+    <script src="/app/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script>
+        let usersBlock = "my";
+        function usersOpen(){
+            if(usersBlock == "my"){
+                document.getElementById("my-chats").style.display = "block";
+                document.getElementById("all_users").style.display = "none";
+                usersBlock = "all";
+                document.getElementById("btmPlus").style.transform = "rotate(0deg)";
+            }else{
+                document.getElementById("all_users").style.display = "block";
+                document.getElementById("my-chats").style.display = "none";
+                usersBlock = "my";
+                document.getElementById("btmPlus").style.transform = "rotate(-135deg)";
+            }
+        }
+        
+        $(document).contextmenu(function(e){
+            window.frames.iframe.hideContextMenu();
+        });
+        $(document).click(function(){
+            window.frames.iframe.hideContextMenu();
+        });
 
+            
+        <?php
+            if($_GET['chat'] != ""){
+                echo("openChat(".$_GET['chat'].");");
+            }
+        ?>
+    </script>
     <style>.tb_button {padding:1px;cursor:pointer;border-right: 1px solid #8b8b8b;border-left: 1px solid #FFF;border-bottom: 1px solid #fff;}
     .tb_button.hover {border:2px outset #def; background-color: #f8f8f8 !important;}.ws_toolbar {z-index:100000}
     .ws_toolbar .ws_tb_btn {cursor:pointer;border:1px solid #555;padding:3px}   .tb_highlight{background-color:yellow}

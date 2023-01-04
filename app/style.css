@@ -221,7 +221,6 @@ body{
   content: '\f00d';
 }
 .users-list{
-  /* max-height: 350px; */
   overflow-y: auto;
 }
 :is(.users-list, .chat-box)::-webkit-scrollbar{
@@ -317,11 +316,17 @@ body{
   box-shadow: 0 0 32px rgb(0 0 0 / 8%),
               0rem 16px 16px -16px rgb(0 0 0 / 10%);
 }
+.chat-box .outgoing .status{
+  text-align: left;background: transparent;font-size: 12px;padding: 5px; padding-left: 10px; box-shadow: 0 0 0 0; font-family: 'Manrope';
+}
 .chat-box .outgoing{
   display: flex;
+  justify-content: right;
+  text-align-last: right;
 }
 .chat-box .outgoing .details{
   margin-left: auto;
+  text-align-last: start;
 }
 .outgoing .details p{
   background: rgb(18, 131, 236);
