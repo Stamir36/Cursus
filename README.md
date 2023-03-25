@@ -11,6 +11,10 @@ Fast and beautiful web application for messaging and communication.
 - Record, download and send voice messages.
 - Beautiful design.
 
+# AI ChatBot
+See: [Cursus AI-ChatBot](https://github.com/Stamir36/CursusAI-ChatBot)
+>Chatbot based on Python and Transformers 🤗, with support for working in the terminal and on the Cursus Messenger website.
+
 # Technologies
 The web application is written using PHP, JavaScript (jQuery and Ajax), CSS and HTML.
 The server uses a MySQL database managed by phpMyAdmin.
