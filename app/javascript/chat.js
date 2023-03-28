@@ -41,6 +41,7 @@ chatBox.onmouseleave = ()=>{
 
 let countData = 0;
 
+var chatUpdate = false;
 setInterval(() =>{
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "php/get-chat.php", true);
@@ -51,10 +52,12 @@ setInterval(() =>{
 
             if(countData != data.length){
                 chatBox.innerHTML = data;
-                if(!chatBox.classList.contains("active")){
-                    scrollToBottom();
+                if(!chatBox.classList.contains("active") && chatUpdate){
+                    
                 }
+                scrollToBottom();
                 countData = data.length;
+                chatUpdate = true;
             }
           }
       }

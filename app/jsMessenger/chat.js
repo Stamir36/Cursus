@@ -52,8 +52,9 @@ setInterval(() =>{
             if(countData != data.length){
                 chatBox.innerHTML = data;
                 if(!chatBox.classList.contains("active")){
-                    scrollToBottom();
+                    
                 }
+                scrollToBottom();
                 countData = data.length;
             }
           }

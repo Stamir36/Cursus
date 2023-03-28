@@ -27,18 +27,21 @@ toggleButton.addEventListener('click', () => {
 document.body.classList.toggle('dark-mode');
 
 function openChat(id){
+  if(id == "0" || id == 0){
+    document.getElementById("chatFrame").src = "/app/cursus/chatBot.php?user_id=0";
+  }else{
+    document.getElementById("chatFrame").src = "/app/cursus/chat.messanger.php?user_id=" + id;
 
-  document.getElementById("chatFrame").src = "/app/cursus/chat.messanger.php?user_id=" + id;
-
-  document.getElementById("chatFrame").onload = function() {
-    if(document.body.classList.contains("dark-mode")){
-      window.frames.iframe.dark_theme();
-    }else{
-      window.frames.iframe.light_theme();
-    }
-  };
-
+    document.getElementById("chatFrame").onload = function() {
+      if(document.body.classList.contains("dark-mode")){
+        window.frames.iframe.dark_theme();
+      }else{
+        window.frames.iframe.light_theme();
+      }
+    };
+  }
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+    parent.document.getElementById("app_header").style.display = "none";
     parent.openChat(id);
   }
 }
@@ -55,6 +58,7 @@ function closeChat(){
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
     parent.closeMobile();
+    parent.document.getElementById("app_header").style.display = "flex";
   }
 }
 

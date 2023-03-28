@@ -38,7 +38,7 @@
     <body>
 
     <div class="app">
-    <div class="header">
+    <div class="header" id="app_header">
     <div class="logo">
         <img src="dist/cursus.svg" alt="">
     </div>
@@ -104,6 +104,22 @@
                         <div class='msg-username'>Заметки</div>
                         <div class='msg-content'>
                             <span class='msg-message'>Моё личное пространство</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='msg' onclick='openChat("0")'>
+                
+                    <div class='msg-profile'>
+                        <div class="chat-avatar-css">
+                            <h3 style="font-size: medium;">AI</h3>
+                        </div>
+                    </div>
+
+                    <div class='msg-detail'>
+                        <div class='msg-username'>CursusBot</div>
+                        <div class='msg-content'>
+                            <span class='msg-message'>Чат бот на базе ИИ</span>
                         </div>
                     </div>
                 </div>

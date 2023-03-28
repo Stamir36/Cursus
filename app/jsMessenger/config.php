@@ -5,9 +5,13 @@
     $username = "root";
     $password = "root";
     $dbname = "unesell";
+  }else{
+    $hostname = 'localhost';
+    $username = 'u409496471_unesell';
+    $password = 'Stas1214';
+    $dbname = 'u409496471_unesell';
   }
 
-  // ДАННЫЕ БАЗЫ ДАННЫХ
 
   $conn = mysqli_connect($hostname, $username, $password, $dbname);
   if(!$conn){

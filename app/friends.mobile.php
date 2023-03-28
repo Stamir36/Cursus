@@ -72,7 +72,22 @@
                         </div>
                     </div>
                 </div>
+                <div class='msg' onclick='openChat("0")'>
+                
+                    <div class='msg-profile'>
+                        <div class="chat-avatar-css">
+                            <h3 style="font-size: medium;">AI</h3>
+                        </div>
+                    </div>
 
+                    <div class='msg-detail'>
+                        <div class='msg-username'>CursusBot</div>
+                        <div class='msg-content'>
+                            <span class='msg-message'>Чат бот на базе ИИ</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div id="my-chats">
                     <div style="height: 80%; display: flex;">
                         <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;display:block;" width="100px" height="100px" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">

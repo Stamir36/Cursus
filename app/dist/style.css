@@ -338,9 +338,6 @@ html {
   content: "•";
   margin-right: 2px;
 }
-.users-list{
-  height: 100%;
-}
 .add {
   position: sticky;
   bottom: 25px;
@@ -1141,4 +1138,56 @@ ul.dropdown-user-menu .menu-divider {
       bottom: 65px;
       opacity: 1;
   }
+}
+@media (max-width: 680px) { 
+  #preloader {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 12px;
+    scale: 0.4;
+    left: 15px;
+  }
+}
+@media (min-width: 680px) {
+  #preloader {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    scale: 0.34;
+    margin-top: -7px;
+  }
+}
+.menuvoiceOne{
+  cursor: default;
+}
+
+#preloader span {
+	position:absolute;
+	border: 8px solid #ffe066;
+	border-top: 8px solid transparent;
+	border-radius:999px;
+}
+
+#preloader span:nth-child(1){
+	width:80px;
+	height:80px;
+	animation: spin-1 2s infinite linear;
+}
+#preloader span:nth-child(2){
+	top: 20px;
+	left: 20px;
+	width:40px;
+	height:40px;
+	animation: spin-2 1s infinite linear;
+}
+@keyframes spin-1 {
+	0% {transform: rotate(360deg); opacity: 1;}
+	50% {transform: rotate(180deg); opacity: 0.5;}
+	100% {transform: rotate(0deg); opacity: 1;}
+}
+@keyframes spin-2 {
+	0% {transform: rotate(0deg); opacity: 0.5;}
+	50% {transform: rotate(180deg); opacity: 1;}
+	100% {transform: rotate(360deg); opacity: 0.5;}
 }
