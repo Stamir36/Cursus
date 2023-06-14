@@ -15,9 +15,9 @@ fileInput.onchange = ({target})=>{
       uploadFile(fileName); //calling uploadFile with passing file name as an argument  
     }
   }else{
-    document.getElementById("infoUploads").classList.add("fileUploadGo");
+    document.getElementById("infoUploads").classList.add("showMessageMenu");
     document.getElementById("textInfos").textContent = "Файл слишком большой, уменьшите его до 2 мб.";
-    setTimeout(() => document.getElementById("infoUploads").classList.remove("fileUploadGo"), 3000);
+    setTimeout(() => document.getElementById("infoUploads").classList.remove("showMessageMenu"), 3000);
   }
 }
 
@@ -28,7 +28,7 @@ function uploadFile(name){
   let data = new FormData(formSend);
   xhr.send(data);
 
-  document.getElementById("infoUploads").classList.add("fileUploadGo");
+  document.getElementById("infoUploads").classList.add("showMessageMenu");
   document.getElementById("textInfos").textContent = "Отправка изображения...";
-  setTimeout(() => document.getElementById("infoUploads").classList.remove("fileUploadGo"), 3000);
+  setTimeout(() => document.getElementById("infoUploads").classList.remove("showMessageMenu"), 3000);
 }

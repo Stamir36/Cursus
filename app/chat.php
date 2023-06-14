@@ -10,6 +10,7 @@
 <?php include_once "header.php"; ?>
 <link rel="stylesheet" href="/app/assets/vendor/nucleo/css/nucleo.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="dist/style.css">
 <style>
     html, body, .chat-box{
@@ -82,13 +83,15 @@
 
     <section class="progress-area"></section>
     <section class="uploaded-area"></section>
+
     <div class="infoSend chat-area-footer" style="display: none;" id="infoUploads">
       <p class="textupload" id="textInfos">Отправка изображения...</p>
     </div>
+
       <form action="#" class="typing-area chat-area-footer" style="position: fixed;align-items: normal;background: rgb(51 52 54);border-top: 0px;" id="textimput">
         <a class="active btnSend" onclick="sendFiles()" style="align-items: center; justify-content: center; display: flex; width: 45px; height: 40px; border-radius: 30px; cursor: pointer;"><i class="fa fa-paperclip"></i></a>
         <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden="">
-        <input type="text" name="message" class="input-field" placeholder="Ваше сообщение..." autocomplete="off" id="inputMess" style="border: 1px solid #a1a1a14d; border-radius: 30px;">
+        <input type="text" name="message" class="input-field" placeholder="Ваше сообщение..." autocomplete="off" id="inputMess" style="border: 1px solid #a1a1a14d; border-radius: 30px; font-family: 'Wix Madefor Display', sans-serif;">
         <button class="active btnSend" id="sendButtun" style="border-radius: 50px;"><i class="fab fa-telegram-plane"></i></button>
       </form>
     </section>

@@ -10,6 +10,7 @@
 <?php include_once "header.php"; ?>
 <link rel="stylesheet" href="/app/assets/vendor/nucleo/css/nucleo.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="dist/style.css">
 <style>
     html, body, .chat-box{
@@ -97,7 +98,7 @@
         <div style="display: contents;" id="contentMess">
           <a class="active btnSend" onclick="sendFiles()" style="align-items: center; justify-content: center; display: flex; width: 45px; height: 40px; border-radius: 30px; cursor: pointer;"><i class="fa fa-paperclip"></i></a>
           <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden="">
-          <input type="text" name="message" class="input-field" placeholder="Ваше сообщение..." autocomplete="off" id="inputMess" style="border: 1px solid #a1a1a14d; border-radius: 30px;">
+          <input type="text" name="message" class="input-field" placeholder="Ваше сообщение..." autocomplete="off" id="inputMess" style="border: 1px solid #a1a1a14d; border-radius: 30px; font-family: 'Wix Madefor Display', sans-serif;">
           <button class="active btnSend" id="sendButtun" style="border-radius: 50px;"><i class="fab fa-telegram-plane"></i></button>  
         </div>
       </form>
