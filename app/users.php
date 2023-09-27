@@ -20,6 +20,7 @@
     <link rel="shortcut icon" href="cursus.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="dist/flowbite.min.css"/>
     <link rel="stylesheet" href="/app/assets/vendor/nucleo/css/nucleo.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="dist/style.css">
@@ -55,8 +56,16 @@
     
     <div class="wrapper">
         <div class="conversation-area" style="width: 100%; display: flex;">
+            <ul class="text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 sm:flex dark:divide-gray-700 dark:text-gray-400">
+                <li onclick="my_chat()" class="w-full">
+                    <a id="my_chat" class="cpointer inline-block w-full p-4 text-gray-900 bg-gray-100 active dark:bg-gray-700 dark:text-white">Личные</a>
+                </li>
+                <li onclick="group_chat()" class="w-full">
+                    <a id="group_chat" class="cpointer inline-block w-full p-4 bg-white hover:text-gray-700 hover:bg-gray-50 active dark:bg-gray-700 dark:text-white dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700">Группы</a>
+                </li>
+            </ul>
 
-        <div class="users-list">
+            <div class="users-list" id="list-user">
                 <div class='msg' onclick='openChat(<?php echo($row['id']); ?>)'>
                 
                     <div class='msg-profile'>
@@ -72,6 +81,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class='msg' onclick='openChat("0")'>
                 
                     <div class='msg-profile'>
@@ -87,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div id="my-chats">
                     <div style="height: 80%; display: flex;">
                         <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;display:block;" width="100px" height="100px" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
@@ -97,14 +107,24 @@
                         </svg>
                     </div>
                 </div>
-
-                <div id="all_users" style="display: none;">
-
-                </div>
             </div>
 
 
-            <button class="add" id="btmPlus" onclick="usersOpen();"></button>
+            <div class="users-list" id="list-group" style="display: none;">
+
+                <div id="my-group" style="height: 100%;">
+                    <div style="height: 80%; display: flex;">
+                        <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;display:block;" width="100px" height="100px" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+                            <path fill="cornflowerblue" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+                                <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform>
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="add" id="btmPlus" onclick="new_chat();"></button>
             <div class="overlay"></div>
         </div>
 
@@ -114,6 +134,7 @@
             </iframe>
         </div>
     </div>
+    
     </div>
     <script src="dist/script.js"></script>
     <script src="jsMessenger/users.js"></script>
@@ -154,6 +175,10 @@
           }else{
             location.href = "chat.php?user_id=" + id;
           }
+        }
+
+        function openGroup(id){
+            location.href = "group.messanger.php?group_id=" + id + "&theme=ligth";
         }
     </script>
     <style>.tb_button {padding:1px;cursor:pointer;border-right: 1px solid #8b8b8b;border-left: 1px solid #FFF;border-bottom: 1px solid #fff;}

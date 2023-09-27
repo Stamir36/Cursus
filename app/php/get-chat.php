@@ -7,11 +7,34 @@
         if($_POST['incoming_id'] != "0"){
             $output = "";
             $sql = "SELECT * FROM messages LEFT JOIN accounts_users ON accounts_users.id = messages.outgoing_msg_id
-                    WHERE (outgoing_msg_id = {$outgoing_id} AND incoming_msg_id = {$incoming_id})
-                    OR (outgoing_msg_id = {$incoming_id} AND incoming_msg_id = {$outgoing_id}) ORDER BY msg_id";
+                    WHERE (outgoing_msg_id = '{$outgoing_id}' AND incoming_msg_id = '{$incoming_id}')
+                    OR (outgoing_msg_id = '{$incoming_id}' AND incoming_msg_id = '{$outgoing_id}') ORDER BY msg_id";
             $query = mysqli_query($conn, $sql);
             if(mysqli_num_rows($query) > 0){
+                $currentDate = null;
+                setlocale(LC_TIME, 'ru_RU.utf8');
+                $months = array( 1 => 'января', 2 => 'февраля', 3 => 'марта', 4 => 'апреля', 5 => 'мая', 6 => 'июня', 7 => 'июля', 8 => 'августа', 9 => 'сентября', 10 => 'октября', 11 => 'ноября', 12 => 'декабря' );
+                
                 while($row = mysqli_fetch_assoc($query)){
+
+                    $date = date("d.m.Y", strtotime($row['time']));
+    
+                    if ($date != $currentDate) {
+                        $datetime = new DateTime($row['time']);
+                        $day = $datetime->format('j');
+                        $month = $datetime->format('n');
+                        $year = $datetime->format('Y');
+                        
+                        $now = $day . ' ' . $months[$month] . ' ' . $year;
+                        
+                        $time = '<div class="text-center">
+                                    <span class="f-Manrope bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">'.$now.'</span>
+                                </div>';
+                                
+                        $output .= $time;
+                        $currentDate = $date;
+                    }
+
                     if($row['outgoing_msg_id'] === $outgoing_id){
                         $look = "";
                         $avatar = $incoming_id.".png";
@@ -27,7 +50,7 @@
                                     </div>';
                     }else{
                         $output .= '<div class="chat incoming" style="align-items: end;">
-                                        <img style="margin-bottom: 30px; border-radius: 30px; border: 3px solid antiquewhite;" src="/data/users/avatar/'.$avatar.'" alt="">
+                                        <img style="margin-bottom: 30px; border-radius: 30px; border: 3px solid antiquewhite; object-fit: cover;" src="/data/users/avatar/'.$avatar.'" alt="">
                                         <div style="display: grid;">
                                             <div class="details">
                                                 <p>'. $row['msg'] .'</p>
@@ -51,8 +74,8 @@
         }else{
             $output = "";
             $sql = "SELECT * FROM messages LEFT JOIN accounts_users ON accounts_users.id = messages.outgoing_msg_id
-                    WHERE (outgoing_msg_id = {$outgoing_id} AND incoming_msg_id = {$incoming_id})
-                    OR (outgoing_msg_id = {$incoming_id} AND incoming_msg_id = {$outgoing_id}) ORDER BY msg_id";
+                    WHERE (outgoing_msg_id = '{$outgoing_id}' AND incoming_msg_id = '{$incoming_id}')
+                    OR (outgoing_msg_id = '{$incoming_id}' AND incoming_msg_id = '{$outgoing_id}') ORDER BY msg_id";
             $query = mysqli_query($conn, $sql);
             
             $font = "'Unecoin'";
@@ -61,7 +84,31 @@
             $com_stablediffusion = '<span style="font-family: '.$font.' ;" class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">Генерация изображения</span>';
 
             if(mysqli_num_rows($query) > 0){
+
+                $currentDate = null;
+                setlocale(LC_TIME, 'ru_RU.utf8');
+                $months = array( 1 => 'января', 2 => 'февраля', 3 => 'марта', 4 => 'апреля', 5 => 'мая', 6 => 'июня', 7 => 'июля', 8 => 'августа', 9 => 'сентября', 10 => 'октября', 11 => 'ноября', 12 => 'декабря' );
+                
                 while($row = mysqli_fetch_assoc($query)){
+
+                    $date = date("d.m.Y", strtotime($row['time']));
+    
+                    if ($date != $currentDate) {
+                        $datetime = new DateTime($row['time']);
+                        $day = $datetime->format('j');
+                        $month = $datetime->format('n');
+                        $year = $datetime->format('Y');
+                        
+                        $now = $day . ' ' . $months[$month] . ' ' . $year;
+                        
+                        $time = '<div class="text-center">
+                                    <span class="f-Manrope bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">'.$now.'</span>
+                                </div>';
+                                
+                        $output .= $time;
+                        $currentDate = $date;
+                    }
+
                     if($row['outgoing_msg_id'] === $outgoing_id){
                         $look = "";
                         $avatar = $incoming_id.".png";

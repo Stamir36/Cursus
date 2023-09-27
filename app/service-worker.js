@@ -1,8 +1,19 @@
 // Installing service worker
-const CACHE_NAME  = 'Cursus';
-/* Add relative URL of all the static content you want to store in
- * cache storage (this will help us use our app offline)*/
-let resourcesToCache = ["./cursus.png", "./style.css", "./dist/style.css", "./dist/script.js", "./dist/noChatImg.png", "./dist/stilus.png", "./../assets/vendor/nucleo/css/nucleo.css"];
+const CACHE_NAME = 'Cursus';
+const resourcesToCache = [
+  "./cursus.png",
+  "./style.css",
+  "./landing.html",
+  "./landing.css",
+  "./dist/style.css",
+  "./dist/script.js",
+  "./dist/noChatImg.png",
+  "./dist/stilus.png",
+  "./dist/flowbite.min.css",
+  "./dist/abstract-lines.svg",
+  "./../assets/vendor/nucleo/css/nucleo.css"
+];
+
 self.addEventListener("install", e=>{
     e.waitUntil(
         caches.open(CACHE_NAME).then(cache =>{
@@ -35,3 +46,25 @@ self.addEventListener('activate', event => {
       })
     );
   });
+self.addEventListener('message', event => {
+    // Обработка сообщений от клиента
+    // Выполнение необходимых действий, например, отправка уведомлений
+});
+
+self.addEventListener('periodicsync', event => {
+    // Обработка периодической синхронизации
+    // Выполнение необходимых задач в фоновом режиме
+});
+
+self.addEventListener('sync', event => {
+    // Обработка фоновой синхронизации
+    // Выполнение необходимых задач в фоновом режиме
+});
+
+
+
+/* Add relative URL of all the static content you want to store in
+const CACHE_NAME  = 'Cursus';
+let resourcesToCache = ["./cursus.png", "./style.css", "./dist/style.css", "./dist/script.js", "./dist/noChatImg.png", "./dist/stilus.png", "./../assets/vendor/nucleo/css/nucleo.css"];
+
+* cache storage (this will help us use our app offline)*/

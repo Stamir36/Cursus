@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
-<html lang="en" dir="ltr">
+<html lang="ru" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <title> Cursus by Unesell - Быстрый мессенджер. Оналйн переписки.</title>
+    <link rel="stylesheet" href="./dist/flowbite.min.css"/>
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="landing.css">
     <link rel="shortcut icon" href="cursus.png" type="image/png" />
     <meta name="description"
     content="Быстрый и лёгкий мессенджер сообщений, который позволяет переписываться с друзьями и коллегами. Лёгкий, красивый, быстрый - это Cursus. От Unesell Studio." />
     <meta name="keywords"
       content="Messendger, Сообщения, переписки, онлайн чат, Tellegram, WhathApp, Bootstrap, jQuery, Unesell, MyDevice, LiPari, Социальные сети, игры, онлайн программы, Общение, Програмирование, Дизайн, Програмное обеспечение, Магазин" />
     <meta name="author" content="Unesell Studio | Стас Мирошниченко" />
-    <link rel="stylesheet" href="landing.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
      <link rel="manifest" href="manifest.json">
 
      <script>
-         // WEB APP - PWA Settings
          if('serviceWorker' in navigator){
              navigator.serviceWorker.register('service-worker.js');
          } else {
@@ -25,26 +25,121 @@
          }
      </script>
    </head>
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="logo"><img src="dist/cursus.svg" alt="logo" class="imglogo"> <a class="textLogo">Cursus</a></div>
-      <div class="buttons">
-        <a>by Unesell Studio</a>
+<body class="dark-mode">
+
+  <div class="loader-container">
+    <div role="status" class="loader">
+      <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+      </svg>
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>  
+
+  <div class="background-lines" id="app">
+    <div class="header header_landing_color rel" id="app_header">
+        <div class="logo">
+            <img src="dist/cursus.svg" alt="">
+        </div>
+        <p class="name">Cursus Messenger</p>
+    </div>
+
+    <section class="dark rel">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl text-left lg:py-16 z-10 relative">
+          <a href="https://github.com/Stamir36/Cursus" class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-blue-700 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800" target="_blank">
+              <span class="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">Репозиторий</span> <span class="text-sm font-medium">Следите за обновлением проекта на GitHub!</span> 
+              <svg class="w-2.5 h-2.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"></path>
+              </svg>
+          </a>
+          <h1 class="mobile-s36 mb-4 font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Быстрый и красивый Cursus Messenger</h1>
+          <p class="mb-8 font-normal text-gray-500 text-left dark:text-gray-200" style="max-width: 65rem;">Новый способ общаться. Оптимизированный интерфейс, шикарный дизайн, и молнееносная скорость чтобы обеспечить комфортное и удобное общение с вашими друзьями.</p>
+          <div class="flex flex-col space-y-4 sm:flex-row sm:justify-left sm:space-y-0 sm:space-x-4">
+            <a class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl" href="/login/?go=cursus" style="font-family: inherit;font-weight: 900;">Войти в мессенджер<svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" style="padding-top: 2px;">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path></svg>
+            </a>
+            <a href="/registration/" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">Регистрация</a>  
+        </div>
       </div>
-    </nav>
+      
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 ptb-0">
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
+                <a class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2">
+                    <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                        <path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z"></path>
+                    </svg>
+                    Дизайн и стиль
+                </a>
+                <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">Минимализм и концентрация</h2>
+                <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Приложение использует уникальный и минималистичный дизайн, который не напрягает глаза. Минималистичность позволяет не перенагружать UI.</p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
+                <a class="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2">
+                    <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"></path>
+                    </svg>
+                    Передовые Web-технологии
+                </a>
+                <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">Передовые технологии</h2>
+                <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Прогрессивное приложение (PWA) визуально и функционально трансформирует сайт в приложение, что позволяет быстро его запускать.</p>
+            </div>
+        </div>
+      </div>
 
-    <div class="text-content">
-      <h2 class="text">Быстрый, лёгкий, твой<br>мессенджер</h2>
-      <p class="text">Обменивайтесь сообщениями с другими пользователями Unesell Studio, общайтесь с друзьями, или соперниками LiPari. Всё это быстро, бесплатно, и красиво.</p>
-    </div>
+    </section>
 
-    <img src="dist/app.png" alt="app" class="appBanner">
-    <div class="play-button" onclick="document.location.href = '/login/?go=cursus';">
-      <span class="play text">Войти в аккаунт</span>
-      <i class="fas fa-play" onclick="click()"></i>
-    </div>
-  </header>
+    <footer class="rel dark rounded-lg shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-gray-800">
+      <p class="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
+          &copy; <a href="https://unesell.com/" class="hover:underline" target="_blank">Unesell Studio</a>. Разработчик: Станислав Мирошниченко
+      </p>
+      <div class="flex justify-center items-center space-x-1">
+        <a href="https://t.me/unesell" data-tooltip-target="tooltip-dribbble" class="inline-flex justify-center p-1.5 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 64 64" fill="currentColor">
+            <path d="M32,10c12.15,0,22,9.85,22,22s-9.85,22-22,22s-22-9.85-22-22S19.85,10,32,10z M39.589,40.968	c0.404-1.241,2.301-13.615,2.534-16.054c0.071-0.738-0.163-1.229-0.619-1.449c-0.553-0.265-1.371-0.133-2.322,0.21	c-1.303,0.47-17.958,7.541-18.92,7.951c-0.912,0.388-1.775,0.81-1.775,1.423c0,0.431,0.256,0.673,0.96,0.924	c0.732,0.261,2.577,0.82,3.668,1.121c1.05,0.29,2.243,0.038,2.913-0.378c0.709-0.441,8.901-5.921,9.488-6.402	c0.587-0.48,1.056,0.135,0.576,0.616c-0.48,0.48-6.102,5.937-6.844,6.693c-0.901,0.917-0.262,1.868,0.343,2.249	c0.689,0.435,5.649,3.761,6.396,4.295c0.747,0.534,1.504,0.776,2.198,0.776C38.879,42.942,39.244,42.028,39.589,40.968z"></path>
+          </svg>
+          <span class="sr-only">Telegram</span>
+        </a>
+        <div id="tooltip-dribbble" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+            Telegram стартапа
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        
+        <a href="https://github.com/Stamir36/Cursus" data-tooltip-target="tooltip-github" class="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">Github</span>
+        </a>
+        <div id="tooltip-github" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+            Проект на GitHub
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+      
+        <a href="https://instagram.com/mr_stamir" data-tooltip-target="tooltip-dribbble" class="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M 8 3 C 5.243 3 3 5.243 3 8 L 3 16 C 3 18.757 5.243 21 8 21 L 16 21 C 18.757 21 21 18.757 21 16 L 21 8 C 21 5.243 18.757 3 16 3 L 8 3 z M 8 5 L 16 5 C 17.654 5 19 6.346 19 8 L 19 16 C 19 17.654 17.654 19 16 19 L 8 19 C 6.346 19 5 17.654 5 16 L 5 8 C 5 6.346 6.346 5 8 5 z M 17 6 A 1 1 0 0 0 16 7 A 1 1 0 0 0 17 8 A 1 1 0 0 0 18 7 A 1 1 0 0 0 17 6 z M 12 7 C 9.243 7 7 9.243 7 12 C 7 14.757 9.243 17 12 17 C 14.757 17 17 14.757 17 12 C 17 9.243 14.757 7 12 7 z M 12 9 C 13.654 9 15 10.346 15 12 C 15 13.654 13.654 15 12 15 C 10.346 15 9 13.654 9 12 C 9 10.346 10.346 9 12 9 z"></path>
+          </svg>      
+          <span class="sr-only">Instagram</span>
+        </a>
+        <div id="tooltip-dribbble" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+            Instagram автора
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
 
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    window.addEventListener('load', function() {
+      var loaderContainer = document.querySelector('.loader-container');
+      loaderContainer.classList.add("fadeOut");
+      loaderContainer.addEventListener('animationend', function() {
+        loaderContainer.style.display = 'none';
+      });
+    });
+  </script>
 </body>
 </html>

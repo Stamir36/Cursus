@@ -10,7 +10,7 @@
 <?php include_once "header.php"; ?>
 <link rel="stylesheet" href="/app/assets/vendor/nucleo/css/nucleo.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+<link href="./dist/flowbite.min.css" rel="stylesheet"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@500&display=swap" rel="stylesheet">
@@ -18,29 +18,20 @@
 
 <link rel="shortcut icon" href="ai.avatar.png" type="image/png" />
 
-
 <link rel="stylesheet" href="dist/style.css">
+
 <style>
-    html, body, .chat-box{
-        background-color: transparent;
-    }
-    .theme_color_back{
-      background: var(--border-color);
-    }
-    .theme_color_back_hover:hover{
-      background: var(--chat-text-bg);
-    }
-    .text_color{
-      color: var(--chat-text-color);
-    }
-    @media (max-width: 780px){
-      .infoSend {
-          position: absolute !important;
-          bottom: 75px !important;
-          font-family: Unecoin !important;
-          height: auto !important;
-      }
-    }
+  html, body, .chat-box{
+    background-color: transparent;
+  }
+  @media (max-width: 780px){
+  .infoSend {
+      position: absolute !important;
+      bottom: 75px !important;
+      font-family: Unecoin !important;
+      height: auto !important;
+  }
+}
 </style>
 
 <body id="chat" class="dark-mode" style="background: transparent;"> <!-- transparent -->
@@ -50,7 +41,7 @@
         <div class="modal" style="display: contents;">
           <div class="modal-content theme_color_back" style="max-width: 35rem;">
             <div class="modal-header">
-              <h3 class="modal-title mt-2 font_Wix">Удаление истории</h3>
+              <h3 class="modal-title mt-2 font_Wix" style="font-weight: 600; font-size: 16px;">Удаление истории</h3>
               <button class="modal-close" data-modal-hide="modal"></button>
             </div>
             <h6 class="text-muted pl-5 pr-5 font_Wix">Очистить историю переписки?</h6>
@@ -76,13 +67,16 @@
           <p>Чат бот на базе ИИ</p>
         </div>
 
-        <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button" style="right: 20px; position: absolute;">
+        <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-1.5 text-sm font-medium text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button" style="right: 20px; position: absolute;">
           <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
         </button>
 
         <!-- Dropdown menu -->
         <div id="dropdownDots" class="theme_color_back z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600" style="right: 20px; position: absolute;">
             <ul class="py-2 text-sm" aria-labelledby="dropdownMenuIconButton">
+              <li>
+                  <a href="https://colab.research.google.com/drive/1BnPDnLK52OPSOVL3TyE7S-_zqI2Nakx-?usp=sharing" target="_blank" style="cursor: pointer;" class="theme_color_back_hover block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Открыть Colab</a>
+                </li>  
               <li>
                 <a onclick="clear_history()" style="cursor: pointer;" class="theme_color_back_hover block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Очистить историю</a>
               </li>
@@ -132,8 +126,8 @@
 
         <div style="display: contents;" id="contentMess">
           <input type="text" class="incoming_id" name="incoming_id" value="0" hidden="">
-          <input type="text" name="message" oninput="command_check()" class="input-field" placeholder="Введите команду &quot;/&quot; или сообщение..." autocomplete="off" id="inputMess" style="border: 1px solid #a1a1a14d; border-radius: 30px; margin-left: auto; font-family: 'Wix Madefor Display', sans-serif;">
-          <button class="active btnSend" id="sendButtun" style="border-radius: 50px;"><i class="fab fa-telegram-plane" style="padding-right: 3px; padding-top: 4px;"></i></button>  
+          <input type="text" name="message" oninput="command_check()" class="input-field input_textBox" placeholder="Введите команду &quot;/&quot; или сообщение..." autocomplete="off" id="inputMess">
+          <button class="active btnSend" id="sendButtun" style="border-radius: 10px;"><i class="fab fa-telegram-plane" style="padding-right: 3px; padding-top: 4px;"></i></button>  
         </div>
 
       </form>
@@ -179,20 +173,21 @@
     }
 
     function dark_theme(){
-      document.getElementById("headers").style.backgroundImage = "linear-gradient(140deg, #27292d 50%, rgba(255,255,255,0) 100%),  url(https://images.unsplash.com/photo-1558865869-c93f6f8482af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMDkwOTV8MHwxfHNlYXJjaHw4fHxhbmltZSUyMGFydHxlbnwwfHx8fDE2NzgwOTA3NzU&ixlib=rb-4.0.3&q=80&w=1080)";
+      document.getElementById("headers").style.backgroundImage = "linear-gradient(140deg, #27292d 50%, rgba(255,255,255,0) 100%),  url(<?php echo $row['imgBackground']; ?>";
       document.getElementById("nameUser").style.color = "#e7e7e7"; document.getElementById("fabback").style.color = "aliceblue";
       document.getElementById("textimput").style.background = "rgb(51 52 54)"; document.getElementById("inputMess").style.backgroundColor = "#4a4a4a";
       document.getElementById("inputMess").style.color = "aliceblue";
       document.getElementById("chat").style.display = "";
       document.body.classList.add('dark-mode');
+      document.body.classList.add('dark');
     }
 
     function light_theme(){
-      document.getElementById("headers").style.backgroundImage = "linear-gradient(140deg, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%),  url(https://images.unsplash.com/photo-1558865869-c93f6f8482af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMDkwOTV8MHwxfHNlYXJjaHw4fHxhbmltZSUyMGFydHxlbnwwfHx8fDE2NzgwOTA3NzU&ixlib=rb-4.0.3&q=80&w=1080)";
-      document.getElementById("nameUser").style.color = "black"; document.getElementById("inputMess").style.color = "black"; document.getElementById("inputMess").style.backgroundColor = "#e5ecef";
-      document.getElementById("textimput").style.background = "rgb(245 245 245)"; document.getElementById("chat").style.display = "";
-      document.getElementById("fabback").style.color = "darkcyan";
+      document.getElementById("headers").style.backgroundImage = "linear-gradient(140deg, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%),  url(<?php echo $row['imgBackground']; ?>";
+      document.getElementById("nameUser").style.color = ""; document.getElementById("fabback").style.color = ""; document.getElementById("inputMess").style.backgroundColor = "#e5ecef";
+      document.getElementById("textimput").style.background = "#dadada"; document.getElementById("inputMess").style.color = "black"; document.getElementById("chat").style.display = "";
       document.body.classList.remove('dark-mode');
+      document.body.classList.remove('dark');
     }
 
     let colors = false;

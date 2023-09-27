@@ -20,6 +20,7 @@
     <link rel="shortcut icon" href="cursus.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./dist/flowbite.min.css"/>
     <link rel="stylesheet" href="/app/assets/vendor/nucleo/css/nucleo.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="dist/style.css">

@@ -101,6 +101,10 @@
   --detail-font-color: var(--input-chat-color);
 }
 
+.w-full{
+  width: 100%;
+}
+
 .font_Wix{
   font-family: 'Wix Madefor Display', sans-serif;
 }
@@ -119,6 +123,25 @@
 
 .orange {
   background-color: #ed8936;
+}
+
+.p-2{
+  padding: 20px;
+}
+
+.prl-2{
+ padding-left: 20px;
+ padding-right: 20px;
+ padding-top: 10px;
+}
+
+.fs-10{
+  font-size: 10px;
+}
+
+.wh-70{
+  width: 70px;
+  height: 70px;
 }
 
 * {
@@ -318,6 +341,7 @@ html {
 
 .msg-detail {
   overflow: hidden;
+  width: 65%;
 }
 
 .msg-content {
@@ -339,7 +363,7 @@ html {
   margin-left: 3px;
 }
 .msg-date:before {
-  content: "•";
+  content: "ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢";
   margin-right: 2px;
 }
 .add {
@@ -1097,6 +1121,11 @@ ul.dropdown-user-menu .menu-divider {
 .text-error-user{
   position: absolute;width: 100%;text-align: center;padding: 30px;cursor: default;
 }
+
+.btnSend{
+  border-radius: 10px;
+}
+
 .btnSend:hover{
   background: var(--theme-color);
 }
@@ -1477,5 +1506,119 @@ ul.dropdown-user-menu .menu-divider {
 }
 
 .opacity-50{
-  opacity: 0.4;
+  opacity: 0.5;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--theme-bg-color);
+  z-index: 9999;
+}
+
+.fadeOut{
+  animation: fadeOut 1s ease-in-out forwards;
+  opacity: 1;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.users-avatar-new{
+  margin-right: 15px;
+  object-fit: cover;
+  margin-left: 3px;
+}
+
+.f-Manrope{
+  font-family: 'Manrope';
+}
+
+.msg-count{
+  right: 10px;
+  position: absolute;
+  font-size: 12px;
+}
+
+.theme_color_back{
+  background: var(--border-color);
+}
+.theme_color_back_hover:hover{
+  background: var(--chat-text-bg);
+}
+.text_color{
+  color: var(--chat-text-color);
+}
+
+.TitleWindowBold{
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.window_users{
+  max-height: 330px;
+  overflow: auto;
+}
+
+.objectFitCover{
+  object-fit: cover;
+}
+
+.cpointer{
+  cursor: pointer;
+}
+
+.avatar-groups{
+  z-index: 1;
+  position: absolute;
+  right: 115px;
+  top: 20px;
+}
+
+.avatar-img-group{
+  width: 40px;
+  height: 40px;
+  padding: 0.2rem;
+}
+
+.alert-chat {
+  z-index: 10;
+  position: fixed;
+  bottom: 80px;
+  right: -500px;
+  transition: right 0.5s ease-in-out;
+}
+
+.cdefault{
+  cursor: default;
+}
+
+.input_textBox{
+  border-radius: 10px;
+  font-family: 'Wix Madefor Display', sans-serif;
+}
+
+.new_searchBar{
+  min-width: 400px; margin-left: 80px; margin-top: 15px; margin-bottom: 15px;
 }

@@ -1,6 +1,29 @@
 const toggleButton = document.querySelector('.dark-light');
 const colors = document.querySelectorAll('.color');
 
+function my_chat(){
+  document.getElementById('group_chat').classList.remove('text-gray-900', 'bg-gray-100');
+  document.getElementById('group_chat').classList.add('bg-white', 'hover:text-gray-700', 'hover:bg-gray-50', 'dark:hover:text-white', 'dark:bg-gray-800', 'dark:hover:bg-gray-700');
+
+  document.getElementById('my_chat').classList.remove('bg-white', 'hover:text-gray-700', 'hover:bg-gray-50', 'dark:hover:text-white', 'dark:bg-gray-800', 'dark:hover:bg-gray-700');
+  document.getElementById('my_chat').classList.add('text-gray-900', 'bg-gray-100');
+
+  document.getElementById("list-user").style.display = "contents";
+  document.getElementById("list-group").style.display = "none";
+}
+
+function group_chat(){
+  document.getElementById('my_chat').classList.remove('text-gray-900', 'bg-gray-100');
+  document.getElementById('my_chat').classList.add('bg-white', 'hover:text-gray-700', 'hover:bg-gray-50', 'dark:hover:text-white', 'dark:bg-gray-800', 'dark:hover:bg-gray-700');
+
+  document.getElementById('group_chat').classList.remove('bg-white', 'hover:text-gray-700', 'hover:bg-gray-50', 'dark:hover:text-white', 'dark:bg-gray-800', 'dark:hover:bg-gray-700');
+  document.getElementById('group_chat').classList.add('text-gray-900', 'bg-gray-100');
+
+  document.getElementById("list-user").style.display = "none";
+  document.getElementById("list-group").style.display = "contents";
+}
+
+
 colors.forEach(color => {
   color.addEventListener('click', e => {
     colors.forEach(c => c.classList.remove('selected'));
@@ -10,19 +33,14 @@ colors.forEach(color => {
   });
 });
 
-
-
 toggleButton.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
-
   if(document.body.classList.contains("dark-mode")){
     window.frames.iframe.dark_theme();
   }else{
     window.frames.iframe.light_theme();
   }
-
 });
-
 
 document.body.classList.toggle('dark-mode');
 
@@ -44,6 +62,23 @@ function openChat(id){
     parent.document.getElementById("app_header").style.display = "none";
     parent.openChat(id);
   }
+  closeModal();
+}
+
+function openGroup(id){
+  document.getElementById("chatFrame").src = "/app/cursus/group.messanger.php?group_id=" + id;
+  document.getElementById("chatFrame").onload = function() {
+    if(document.body.classList.contains("dark-mode")){
+      window.frames.iframe.dark_theme();
+    }else{
+      window.frames.iframe.light_theme();
+    }
+  };
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+    parent.document.getElementById("app_header").style.display = "none";
+    parent.openChat(id);
+  }
+  closeModal();
 }
 
 function closeChat(){
@@ -126,3 +161,100 @@ function closeMobile(){
     }
     pastedImage.src = source;
   }
+
+  function create_group() {
+    const groupName = document.getElementById('GroupName').value;
+    const groupLink = document.getElementById('GroupLink').value;
+    const fileInput = document.getElementById('file_upload');
+    const formData = new FormData();
+  
+    // Проверка на пустые поля и выбор изображения
+    if (groupName.trim() === '') {
+      openModelError('Введите название группы.');
+      return;
+    }
+  
+    if (groupLink.trim() === '') {
+      openModelError('Введите ссылку на группу.');
+      return;
+    }
+  
+    if (!fileInput.files[0]) {
+      openModelError('Выберите изображение для аватара группы.');
+      return;
+    }
+  
+    checkLinkUniqueness(groupLink, function(isUnique) {
+      if (isUnique) {
+        // Если ссылка уникальна, добавляем данные в FormData
+        formData.append('GroupName', groupName);
+        formData.append('GroupLink', groupLink);
+        formData.append('uploadfile', fileInput.files[0]);
+  
+        // Отправка запроса на сервер
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'new.group.php', true);
+  
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.success) {
+              document.getElementById('GroupName').value = '';
+              document.getElementById('GroupLink').value = '';
+              fileInput.value = ''; // Очищаем выбранный файл
+              closeModal();
+              openGroup(groupLink);
+            } else {
+              openModelError('Произошла ошибка: ' + response.error);
+            }
+          }
+        };
+  
+        xhr.send(formData);
+      } else {
+        openModelError('Ссылка уже занята. Пожалуйста, выберите другую.');
+      }
+    });
+  }
+  
+  // Функция для проверки уникальности ссылки на сервере
+  function checkLinkUniqueness(groupLink, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'php/check_link.php', true);
+  
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        const response = xhr.responseText;
+        callback(response === 'unique');
+      } else {
+        openModelError('Ошибка при проверке уникальности ссылки.');
+        callback(false);
+      }
+    };
+  
+    xhr.send('GroupLink=' + encodeURIComponent(groupLink));
+  }
+
+  function updateClockAndBattery() {
+    var currentTime = new Date();
+    var hours = currentTime.getHours().toString().padStart(2, '0');
+    var minutes = currentTime.getMinutes().toString().padStart(2, '0');
+    var timeString = hours + ':' + minutes;
+    document.getElementById('time').textContent = timeString;
+    getBatteryLevel().then(function(level) {
+      document.getElementById('battery').textContent = level;
+    });
+}
+
+  function getBatteryLevel() {
+    if ('getBattery' in navigator) {
+      return navigator.getBattery().then(function(battery) {
+        var level = Math.round(battery.level * 100);
+        return level + '%';
+      });
+    } else {
+      return 'Не поддерживается';
+    }
+  }
+  setInterval(updateClockAndBattery, 1000);

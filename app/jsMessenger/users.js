@@ -1,6 +1,7 @@
-const searchBar = document.querySelector(".search input"),
-searchIcon = document.querySelector(".search button"),
+const searchBar = document.querySelector("#searchInput"),
+searchIcon = document.querySelector("#searchIcon"),
 mychat = document.querySelector("#my-chats"),
+mygroup = document.querySelector("#my-group"),
 usersList = document.querySelector("#all_users");
 
 
@@ -22,12 +23,13 @@ searchBar.onkeyup = ()=>{
     searchBar.classList.remove("active");
   }
   let xhr = new XMLHttpRequest();
+
   xhr.open("POST", "jsMessenger/search.php", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
         if(xhr.status === 200){
           let data = xhr.response;
-          usersList.innerHTML = data;
+          mychat.innerHTML = data;
         }
     }
   }
@@ -35,6 +37,7 @@ searchBar.onkeyup = ()=>{
   xhr.send("searchTerm=" + searchTerm);
 }
 
+// Все пользователи в системе
 setInterval(() =>{
   let xhr = new XMLHttpRequest();
   xhr.open("GET", "jsMessenger/users.php", true);
@@ -51,6 +54,7 @@ setInterval(() =>{
   xhr.send();
 }, 500);
 
+// Пользователи, с которым ведётся чат.
 setInterval(() =>{
   let xhr = new XMLHttpRequest();
   xhr.open("GET", "jsMessenger/my.chat.php", true);
@@ -68,3 +72,19 @@ setInterval(() =>{
 }, 500);
 
 
+// Группы, в которых мы участвуем.
+setInterval(() =>{
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", "jsMessenger/group.chat.php", true);
+  xhr.onload = ()=>{
+    if(xhr.readyState === XMLHttpRequest.DONE){
+        if(xhr.status === 200){
+          let data = xhr.response;
+          if(!searchBar.classList.contains("active")){
+            mygroup.innerHTML = data;
+          }
+        }
+    }
+  }
+  xhr.send();
+}, 500);

@@ -5,9 +5,10 @@
                 OR incoming_msg_id = {$outgoing_id}) ORDER BY msg_id DESC LIMIT 1";
         $query2 = mysqli_query($conn, $sql2);
         $row2 = mysqli_fetch_assoc($query2);
-        (mysqli_num_rows($query2) > 0) ? $result = $row2['msg'] : $result ="Нет сообщений";
+        
+        (mysqli_num_rows($query2) > 0) ? $result = "Чат: ".$row2['msg'] : $result = $row['about_me'];
 
-        (strlen($result) > 28) ? $msg =  substr($result, 0, 28) . '...' : $msg = $result;
+        (strlen($result) > 100) ? $msg =  substr($result, 0, 100) . '...' : $msg = $result;
 
         $mystring = $msg;
         $findme   = 'audio controls src';

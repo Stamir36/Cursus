@@ -1,4 +1,4 @@
-
+<!--
   <div class="menu">
     <ul class="menu-list">
       <li class="menu-item"><button class="menu-button" onclick="document.execCommand('copy')">&nbsp;&nbsp;Копировать</button></li>
@@ -200,3 +200,4 @@
   }, 500);
 
   </script>
+-->
